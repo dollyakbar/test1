@@ -10,13 +10,15 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	</http:listener-config>
 	<flow name="dwmapfunFlow" doc:id="b13098c8-ff87-46dc-a267-d9fc6b763bec" >
 		<http:listener doc:name="Listener" doc:id="e7fd78ac-f18a-4067-85c2-d2502058b7d5" config-ref="HTTP_Listener_config" path="/test"/>
+		<logger level="INFO" doc:name="Logger" doc:id="bdbc5e8f-fb2c-42fc-ab49-b2003a392d36" message="star flow"/>
 		<ee:transform doc:name="Transform Message" doc:id="318ca4c5-c5ca-41c9-a514-4a830b606b76" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0
 output application/json
 ---
-payload map 2*$]]></ee:set-payload>
+[2,5] map 2*$]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="7f6c20ac-6f6b-4e0c-9abc-8a07395bd778" message="end flow"/>
 	</flow>
 </mule>
